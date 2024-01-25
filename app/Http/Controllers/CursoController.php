@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use App\Models\Alumno;
+use App\Models\Profesor;
 
 class CursoController extends Controller
 {
@@ -21,7 +23,9 @@ class CursoController extends Controller
      */
     public function create()
     {
-        //
+        $profesores = Profesor::all();
+        $alumnos = Alumno::all();
+        return view('cursos.create', ['profesores' => $profesores, 'alumnos' => $alumnos]);
     }
 
     /**
@@ -29,7 +33,12 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $curso = new Curso($request->all());
+        $curso->save();
+        foreach ($request->alumno_ids as $alumno_id){
+            $curso->alumnos()->attach($alumno_id);
+        }
+        return redirect()->action([CursoController::class, 'index']);
     }
 
     /**

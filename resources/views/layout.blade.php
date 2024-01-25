@@ -52,4 +52,38 @@
         color: white;
         background-color: #04AA6D;
     }
+    .new-button {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: #3498db;
+        color: #ffffff;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    .new-button:hover {
+        background-color: #2980b9;
+    }
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
 </style>

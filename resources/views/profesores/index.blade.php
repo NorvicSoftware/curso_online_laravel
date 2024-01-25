@@ -1,6 +1,9 @@
 @extends('layout')
 @section('content')
     <h2>Listado de Profesores</h2>
+    <a class="new-button" href="{{ route('profesores.create') }}"> Nuevo Profesor</a>
+    <br/>
+    <br/>
     <table>
         <tr>
             <th>Nombre y Apellido</th>

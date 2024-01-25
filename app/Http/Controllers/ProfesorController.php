@@ -21,7 +21,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        //
+        return view('profesores.create');
     }
 
     /**
@@ -29,7 +29,9 @@ class ProfesorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $profesor = new Profesor($request->all());
+        $profesor->save();
+        return redirect()->action([ProfesorController::class, 'index']);
     }
 
     /**

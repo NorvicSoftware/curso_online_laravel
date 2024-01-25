@@ -23,3 +23,12 @@ Route::get('/', function () {
 Route::get('/profesores', [ProfesorController::class, 'index'])->name('profesores.index');
 Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
 Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
+
+Route::get('/profesores/create', [ProfesorController::class, 'create'])->name('profesores.create');
+Route::post('/profesores',  [ProfesorController::class, 'store'])->name('profesores.store');
+
+Route::get('/alumnos/create', [AlumnoController::class, 'create'])->name('alumnos.create');
+Route::post('/alumnos',  [AlumnoController::class, 'store'])->name('alumnos.store');
+
+Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+Route::post('/cursos',  [CursoController::class, 'store'])->name('cursos.store');

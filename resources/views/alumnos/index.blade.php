@@ -1,5 +1,8 @@
 <x-layout>
     <h2>Listado de Alumnos</h2>
+    <a class="new-button" href="{{ route('alumnos.create') }}"> Nuevo Alumno</a>
+    <br/>
+    <br/>
     <table>
         <tr>
             <th>Nombre y Apellido</th>
