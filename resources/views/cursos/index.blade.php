@@ -10,6 +10,7 @@
             <th>Horas Academicas</th>
             <th>Profesor</th>
             <th>Alumnos</th>
+            <th>Acción</th>
         </tr>
         @foreach ($cursos as $curso)
             <tr>
@@ -21,6 +22,9 @@
                     @foreach($curso->alumnos as $alumno)
                         {{ $alumno->nombre_apellido }} <br>
                     @endforeach
+                </td>
+                <td>
+                    <a href="{{ route('cursos.edit', $curso->id) }}">Editar</a>
                 </td>
             </tr>
         @endforeach

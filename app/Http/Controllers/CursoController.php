@@ -54,7 +54,10 @@ class CursoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $profesores = Profesor::all();
+        $alumnos = Alumno::all();
+        $curso = Curso::findOrFail($id);
+        return view('cursos.edit', ['curso' => $curso, 'profesores' => $profesores, 'alumnos' => $alumnos]);
     }
 
     /**
@@ -62,7 +65,17 @@ class CursoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $curso = Curso::findOrFail($id);
+        $curso->nombre = $request->nombre;
+        $curso->nivel = $request->nivel;
+        $curso->horas_academicas = $request->horas_academicas;
+        $curso->profesor_id = $request->profesor_id;
+        $curso->save();
+        $curso->alumnos()->detach();
+        foreach ($request->alumno_ids as $alumno_id){
+            $curso->alumnos()->attach($alumno_id);
+        }
+        return redirect()->action([CursoController::class, 'index']);
     }
 
     /**

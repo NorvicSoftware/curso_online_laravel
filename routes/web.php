@@ -32,3 +32,12 @@ Route::post('/alumnos',  [AlumnoController::class, 'store'])->name('alumnos.stor
 
 Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
 Route::post('/cursos',  [CursoController::class, 'store'])->name('cursos.store');
+
+Route::get('/profesores/{id}/editar', [ProfesorController::class, 'edit'])->name('profesores.edit');
+Route::put('/profesores/{id}', [ProfesorController::class, 'update'])->name('profesores.update');
+
+Route::get('/alumnos/{id}/editar', [AlumnoController::class, 'edit'])->name('alumnos.edit');
+Route::put('/alumnos/{id}', [AlumnoController::class, 'update'])->name('alumnos.update');
+
+Route::get('/cursos/{id}/editar', [CursoController::class, 'edit'])->name('cursos.edit');
+Route::put('/cursos/{id}', [CursoController::class, 'update'])->name('cursos.update');

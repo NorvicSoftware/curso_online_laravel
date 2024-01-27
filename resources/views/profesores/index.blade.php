@@ -10,6 +10,7 @@
             <th>Profesión</th>
             <th>Grado Academico</th>
             <th>Teléfono</th>
+            <th>Acción</th>
         </tr>
         @foreach ($profesores as $profesor)
             <tr>
@@ -17,6 +18,9 @@
                 <td>{{ $profesor->profesion }}</td>
                 <td>{{ $profesor->grado_academico }}</td>
                 <td>{{ $profesor->telefono }}</td>
+                <td>
+                    <a href="{{ route('profesores.edit', $profesor->id) }}">Editar</a>
+                </td>
             </tr>
         @endforeach
     </table>

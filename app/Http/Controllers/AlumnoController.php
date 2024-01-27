@@ -47,7 +47,8 @@ class AlumnoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $alumno = Alumno::findOrFail($id);
+        return view('alumnos.edit', ['alumno' => $alumno]);
     }
 
     /**
@@ -55,7 +56,13 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $alumno = Alumno::findOrFail($id);
+        $alumno->nombre_apellido = $request->nombre_apellido;
+        $alumno->edad = $request->edad;
+        $alumno->telefono = $request->telefono;
+        $alumno->direccion = $request->direccion;
+        $alumno->save();
+        return redirect()->action([AlumnoController::class, 'index']);
     }
 
     /**

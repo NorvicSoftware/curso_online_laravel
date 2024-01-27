@@ -47,7 +47,8 @@ class ProfesorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $profesor = Profesor::findOrFail($id);
+        return view('profesores.edit', ['profesor' => $profesor]);
     }
 
     /**
@@ -55,7 +56,13 @@ class ProfesorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $profesor = Profesor::findOrFail($id);
+        $profesor->nombre_apellido = $request->nombre_apellido;
+        $profesor->profesion = $request->profesion;
+        $profesor->grado_academico = $request->grado_academico;
+        $profesor->telefono = $request->telefono;
+        $profesor->save();
+        return redirect()->action([ProfesorController::class, 'index']);
     }
 
     /**

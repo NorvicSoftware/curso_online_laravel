@@ -9,6 +9,7 @@
             <th>Edad</th>
             <th>Teléfono</th>
             <th>Dirección</th>
+            <th>Acción</th>
         </tr>
         @foreach ($alumnos as $alumno)
             <tr>
@@ -16,6 +17,9 @@
                 <td>{{ $alumno->edad }}</td>
                 <td>{{ $alumno->telefono }}</td>
                 <td>{{ $alumno->direccion }}</td>
+                <td>
+                    <a href="{{ route('alumnos.edit', $alumno->id) }}">Editar</a>
+                </td>
             </tr>
         @endforeach
     </table>
