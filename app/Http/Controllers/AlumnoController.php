@@ -29,6 +29,10 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'edad' => 'required|integer',
+        ]);
         $alumno = new Alumno($request->all());
         $alumno->save();
         return redirect()->action([AlumnoController::class, 'index']);
@@ -56,6 +60,10 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'edad' => 'required|integer',
+        ]);
         $alumno = Alumno::findOrFail($id);
         $alumno->nombre_apellido = $request->nombre_apellido;
         $alumno->edad = $request->edad;

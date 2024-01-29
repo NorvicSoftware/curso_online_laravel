@@ -29,6 +29,10 @@ class ProfesorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'profesion' => 'required|max:35',
+        ]);
         $profesor = new Profesor($request->all());
         $profesor->save();
         return redirect()->action([ProfesorController::class, 'index']);
@@ -56,6 +60,10 @@ class ProfesorController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'profesion' => 'required|max:35',
+        ]);
         $profesor = Profesor::findOrFail($id);
         $profesor->nombre_apellido = $request->nombre_apellido;
         $profesor->profesion = $request->profesion;

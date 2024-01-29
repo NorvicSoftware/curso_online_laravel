@@ -33,6 +33,12 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'materia' => 'required|max:75',
+            'nivel' => 'required|max:35',
+            'profesor_id' => 'required|integer',
+            'alumno_ids' => 'required|array',
+        ]);
         $curso = new Curso($request->all());
         $curso->save();
         foreach ($request->alumno_ids as $alumno_id){
@@ -65,8 +71,14 @@ class CursoController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'materia' => 'required|max:75',
+            'nivel' => 'required|max:35',
+            'profesor_id' => 'required|integer',
+            'alumno_ids' => 'required|array',
+        ]);
         $curso = Curso::findOrFail($id);
-        $curso->nombre = $request->nombre;
+        $curso->materia = $request->materia;
         $curso->nivel = $request->nivel;
         $curso->horas_academicas = $request->horas_academicas;
         $curso->profesor_id = $request->profesor_id;

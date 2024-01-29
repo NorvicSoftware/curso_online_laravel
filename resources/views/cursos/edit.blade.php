@@ -3,10 +3,16 @@
     <form action="{{ route('cursos.update', $curso->id) }}" method ="POST">
         @csrf
         {{ method_field('PUT') }}
-        <label>Nombre Curso:</label>
-        <input type="text" name="nombre" placeholder="Nombre Curso" value="{{ $curso->nombre }}">
+        <label>Materia:</label>
+        <input type="text" name="materia" placeholder="Materia" value="{{ old('materia', $curso->materia) }}">
+        @error('materia')
+        <p class="error-message">{{ $message }}</p>
+        @enderror
         <label>Nivel:</label>
-        <input type="text" name="nivel" placeholder="Nivel" value="{{ $curso->nivel }}">
+        <input type="text" name="nivel" placeholder="Nivel" value="{{ old('nivel', $curso->nivel) }}">
+        @error('nivel')
+        <p class="error-message">{{ $message }}</p>
+        @enderror
         <label>Horas Academicas:</label>
         <input type="text" name="horas_academicas" placeholder="Horas Academicas" value="{{ $curso->horas_academicas }}">
         <select id="profesor_id" name="profesor_id">
@@ -21,8 +27,8 @@
         <select id="alumno_ids" name="alumno_ids[]" multiple>
             @foreach($alumnos as $alumno)
                 @php $valor = 0; @endphp
-                @foreach($alumno_curso as $alumno_curso_valor)
-                    @if($alumno->id == $alumno_curso_valor->alumno_id)
+                @foreach($curso->alumnos as $alumno_curso_valor)
+                    @if($alumno->id == $alumno_curso_valor->id)
                         @php $valor = 1; @endphp
                     @endif
                 @endforeach
