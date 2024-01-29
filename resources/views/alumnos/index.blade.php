@@ -19,6 +19,7 @@
                 <td>{{ $alumno->direccion }}</td>
                 <td>
                     <a href="{{ route('alumnos.edit', $alumno->id) }}">Editar</a>
+                    <a href="{{ route('alumnos.show', $alumno->id) }}">Ver</a>
                 </td>
             </tr>
         @endforeach

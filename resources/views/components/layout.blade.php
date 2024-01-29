@@ -13,6 +13,11 @@
         {{ $slot }}
     </body>
 </html>
+<script>
+    function EliminarRegistro(value){
+        action = confirm(value) ? true: event.preventDefault()
+    }
+</script>
 <style>
     body {
         margin: auto;

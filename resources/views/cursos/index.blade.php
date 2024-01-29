@@ -25,6 +25,7 @@
                 </td>
                 <td>
                     <a href="{{ route('cursos.edit', $curso->id) }}">Editar</a>
+                    <a href="{{ route('cursos.show', $curso->id) }}">Ver</a>
                 </td>
             </tr>
         @endforeach

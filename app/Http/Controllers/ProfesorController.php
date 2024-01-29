@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profesor;
+use App\Models\Curso;
 
 class ProfesorController extends Controller
 {
@@ -43,7 +44,8 @@ class ProfesorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $profesor = Profesor::findOrFail($id);
+        return view('profesores.view', ['profesor' => $profesor]);
     }
 
     /**
@@ -78,6 +80,13 @@ class ProfesorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if(Curso::where('profesor_id', '=', $id)->first() != null){
+            return redirect()->back()->withErrors(['mensaje' => 'El profesor no puede ser eliminado.']);
+        }
+        else{
+            $profesor = Profesor::findOrFail($id);
+            $profesor->delete();
+            return redirect()->action([ProfesorController::class, 'index']);
+        }
     }
 }

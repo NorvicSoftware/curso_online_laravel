@@ -41,3 +41,12 @@ Route::put('/alumnos/{id}', [AlumnoController::class, 'update'])->name('alumnos.
 
 Route::get('/cursos/{id}/editar', [CursoController::class, 'edit'])->name('cursos.edit');
 Route::put('/cursos/{id}', [CursoController::class, 'update'])->name('cursos.update');
+
+Route::get('/profesores/{id}/ver', [ProfesorController::class, 'show'])->name('profesores.show');
+Route::get('/alumnos/{id}/ver', [AlumnoController::class, 'show'])->name('alumnos.show');
+Route::get('/cursos/{id}/ver', [CursoController::class, 'show'])->name('cursos.show');
+
+Route::delete('/profesores/{id}', [ProfesorController::class, 'destroy'])->name('profesores.destroy');
+Route::delete('/alumnos/{id}', [AlumnoController::class, 'destroy'])->name('alumnos.destroy');
+Route::delete('/cursos/{id}', [CursoController::class, 'destroy'])->name('cursos.destroy');
+

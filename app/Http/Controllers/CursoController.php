@@ -52,7 +52,8 @@ class CursoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $curso = Curso::findOrFail($id);
+        return view('cursos.view', ['curso' => $curso]);
     }
 
     /**
@@ -95,6 +96,9 @@ class CursoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $curso = Curso::findOrFail($id);
+        $curso->alumnos()->detach();
+        $curso->delete();
+        return redirect()->action([CursoController::class, 'index']);
     }
 }

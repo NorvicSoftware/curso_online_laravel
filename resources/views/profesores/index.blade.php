@@ -20,6 +20,7 @@
                 <td>{{ $profesor->telefono }}</td>
                 <td>
                     <a href="{{ route('profesores.edit', $profesor->id) }}">Editar</a>
+                    <a href="{{ route('profesores.show', $profesor->id) }}">Ver</a>
                 </td>
             </tr>
         @endforeach
