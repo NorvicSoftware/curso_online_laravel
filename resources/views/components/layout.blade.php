@@ -9,6 +9,7 @@
             <li><a href="{{ route('profesores.index') }}">Profesores</a></li>
             <li><a href="{{ route('alumnos.index') }}">Alumnos</a></li>
             <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
+            <li><a href="{{ route('alumnos.report') }}">Reporte Alumnos</a></li>
         </ul>
         {{ $slot }}
     </body>

@@ -50,3 +50,5 @@ Route::delete('/profesores/{id}', [ProfesorController::class, 'destroy'])->name(
 Route::delete('/alumnos/{id}', [AlumnoController::class, 'destroy'])->name('alumnos.destroy');
 Route::delete('/cursos/{id}', [CursoController::class, 'destroy'])->name('cursos.destroy');
 
+Route::get('/alumnos/reporte/web', [AlumnoController::class, 'report'])->name('alumnos.report');
+

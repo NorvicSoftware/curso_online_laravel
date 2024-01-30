@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\AlumnoRepository;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use Illuminate\Support\Facades\DB;
 
 class AlumnoController extends Controller
 {
+    protected $cursos;
+
+    public function __construct(AlumnoRepository $cursos){
+        $this->cursos = $cursos;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -88,5 +94,12 @@ class AlumnoController extends Controller
             $alumno->delete();
             return redirect()->action([AlumnoController::class, 'index']);
         }
+    }
+
+    public function report()
+    {
+        $alumnos = $this->cursos->obtenerLosAlumnosIncritosAUnCurso();
+        return view('alumnos.report', ['alumnos' => $alumnos]);
+
     }
 }
