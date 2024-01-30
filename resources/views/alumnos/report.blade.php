@@ -1,6 +1,9 @@
 <x-layout>
     <h2>Reporte Cursos</h2>
     <br>
+    <a class="new-button" target="_blank" href="{{ route('alumnos.reportPDF') }}"> Reporte Alumno PDF</a>
+    <br>
+    <br>
     <table>
         <tr>
             <th>Alumno</th>

@@ -6,6 +6,7 @@ use App\Repositories\AlumnoRepository;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class AlumnoController extends Controller
 {
@@ -101,5 +102,14 @@ class AlumnoController extends Controller
         $alumnos = $this->cursos->obtenerLosAlumnosIncritosAUnCurso();
         return view('alumnos.report', ['alumnos' => $alumnos]);
 
+    }
+
+    public function reportPDF()
+    {
+        $data = [
+            'alumnos' => $this->cursos->obtenerLosAlumnosIncritosAUnCurso(),
+        ];
+        $pdf = PDF::loadView('alumnos.pdf', $data);
+        return $pdf->stream();
     }
 }
