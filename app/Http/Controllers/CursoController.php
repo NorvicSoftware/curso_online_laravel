@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Curso;
 use App\Models\Alumno;
 use App\Models\Profesor;
+use Illuminate\Support\Facades\DB;
 
 class CursoController extends Controller
 {
@@ -39,10 +40,18 @@ class CursoController extends Controller
             'profesor_id' => 'required|integer',
             'alumno_ids' => 'required|array',
         ]);
-        $curso = new Curso($request->all());
-        $curso->save();
-        foreach ($request->alumno_ids as $alumno_id){
-            $curso->alumnos()->attach($alumno_id);
+        DB::beginTransaction();
+        try {
+            $curso = new Curso($request->all());
+            $curso->save();
+            foreach ($request->alumno_ids as $alumno_id){
+                $curso->alumnos()->attach($alumno_id);
+            }
+            DB::commit();
+        }
+        catch (\Exception $e){
+            DB::rollBack();
+            return "Error de insercción de datos" . $e->getMessage();
         }
         return redirect()->action([CursoController::class, 'index']);
     }
