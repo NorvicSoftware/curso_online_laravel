@@ -60,22 +60,25 @@ Este [curso de Laravel](https://norvicsoftware.com/curso-de-laravel-nivel-interm
 **[15.- Validación de formularios en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
 - Aplicación de reglas de validación para garantizar la integridad de los datos ingresados en formularios.
 
-**[16.- CRUD en Laravel ver y eliminar Registros](https://norvicsoftware.com/factories-en-laravel/)**
+**[16.- Traducir mensajes en Laravel al Español](https://norvicsoftware.com/traducir-mensajes-en-laravel-al-espanol/)**
+- Implementación del paquete de Laravel Lang para la traducción de mensajes al español.
+
+**[17.- CRUD en Laravel ver y eliminar Registros](https://norvicsoftware.com/factories-en-laravel/)**
 - Implementación de la funcionalidad para visualizar y eliminar registros de la base de datos.
 
-**[17.- Inyección de dependencias en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
+**[18.- Inyección de dependencias en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
 - Entendimiento y aplicación de la inyección de dependencias para mejorar la modularidad y mantenibilidad del código.
 
-**[18.- Transacciones en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
+**[19.- Transacciones en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
 - Uso de transacciones para garantizar operaciones atómicas en la base de datos.
 
-**[19.- Reportes PDF en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
+**[20.- Reportes PDF en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
 - Generación de reportes en formato PDF utilizando DOMPDF de Laravel.
 
-**[20.- Reportes Excel en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
+**[21.- Reportes Excel en Laravel](https://norvicsoftware.com/factories-en-laravel/)**
 - Creación de reportes en formato Excel para exportar datos de manera eficiente.
 
-**[21.- Subir proyecto Laravel a Hosting Compartido](https://norvicsoftware.com/factories-en-laravel/)**
+**[22.- Subir proyecto Laravel a Hosting Compartido](https://norvicsoftware.com/factories-en-laravel/)**
 - Despliegue de la aplicación para subir tu proyecto Laravel a un entorno de hosting compartido.
 
 ## Saludos y Exitos
