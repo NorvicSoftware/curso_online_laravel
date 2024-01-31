@@ -6,14 +6,16 @@ use App\Repositories\AlumnoRepository;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\Exports\AlumnoExcel;
 use PDF;
 
 class AlumnoController extends Controller
 {
-    protected $cursos;
+    protected $alumnos;
 
-    public function __construct(AlumnoRepository $cursos){
-        $this->cursos = $cursos;
+    public function __construct(AlumnoRepository $alumnos){
+        $this->alumnos = $alumnos;
     }
     /**
      * Display a listing of the resource.
@@ -99,7 +101,7 @@ class AlumnoController extends Controller
 
     public function report()
     {
-        $alumnos = $this->cursos->obtenerLosAlumnosIncritosAUnCurso();
+        $alumnos = $this->alumnos->obtenerLosAlumnosIncritosAUnCurso();
         return view('alumnos.report', ['alumnos' => $alumnos]);
 
     }
@@ -107,9 +109,17 @@ class AlumnoController extends Controller
     public function reportPDF()
     {
         $data = [
-            'alumnos' => $this->cursos->obtenerLosAlumnosIncritosAUnCurso(),
+            'alumnos' => $this->alumnos->obtenerLosAlumnosIncritosAUnCurso(),
         ];
         $pdf = PDF::loadView('alumnos.pdf', $data);
         return $pdf->stream();
+    }
+
+    public function reportExcel()
+    {
+        $data = [
+            'alumnos' => $this->alumnos->obtenerLosAlumnosIncritosAUnCurso(),
+        ];
+        return Excel::download(new AlumnoExcel($data), 'alumnos.xlsx');
     }
 }

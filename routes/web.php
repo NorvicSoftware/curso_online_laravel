@@ -53,3 +53,4 @@ Route::delete('/cursos/{id}', [CursoController::class, 'destroy'])->name('cursos
 Route::get('/alumnos/reporte/web', [AlumnoController::class, 'report'])->name('alumnos.report');
 
 Route::get('/alumnos/reporte/pdf', [AlumnoController::class, 'reportPDF'])->name('alumnos.reportPDF');
+Route::get('/alumnos/reporte/excel', [AlumnoController::class, 'reportExcel'])->name('alumnos.reportExcel');
